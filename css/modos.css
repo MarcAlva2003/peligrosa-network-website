@@ -1,0 +1,14 @@
+.div-1{
+    width: 20rem;
+    height: 20rem;
+    background-color: red;
+}
+.div-2{
+    width: 20rem;
+    height: 20rem;
+    background-color: blue;
+}
+
+.div-1:hover ~ .div-2{
+    background-color: palegoldenrod;
+}

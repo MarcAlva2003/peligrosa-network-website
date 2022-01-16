@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tienda</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap"
+		rel="stylesheet">
+	<!--font-family: 'Open Sans Condensed', sans-serif;-->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+	<!--font-family: 'Encode Sans', sans-serif;-->
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+	<!--font-family: 'Ubuntu', sans-serif;-->
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/tienda.css">
+</head>
+
+<body>
+	<header>
+		<div class="contenedor-header">
+			<img src="img/logo3.png" alt="logo" class="logo">
+		</div>
+	</header>
+	<nav class="navegacion-principal">
+		<a href="index.html">
+			<p>Server</p>
+		</a>
+		<a href="tienda.html">
+			<p>Tienda</p>
+		</a>
+		<a href="modos.html">
+			<p>Modos</p>
+		</a>
+		<a href="staff.html">
+			<p>Staff</p>
+		</a>
+		<a href="index.html#galeria">
+			<p>Fotos</p>
+		</a>
+		<a href="novedades.html">
+			<p>Novedades</p>
+		</a>
+	</nav>
+	<div class="titulo-inicial">
+		<h1>Bienvenido a la tienda del server mas</h1>
+		<h2>PELIGROSO</h2>
+	</div>
+
+	<article id="app">
+		<h2>Rangos</h2>
+		<div class="rangos">
+			<div v-for="rango of rangos">
+				<div class="rango">
+					<img :src="rango.imagen" alt="">
+					<h3>{{rango.nombre}} - [{{rango.duracion}}]</h3>
+					<p>{{rango.precio}}</p>
+					<button class="boton-rangos" @click="rango.ventana = true">INFO</button>
+				</div>
+				<!-------VENTANA EMERGENTE DE RANGO------->
+				<div v-if="rango.ventana">
+					<div class="overlay">
+						<div class="info-abierta scroll">
+							<div>
+								<img :src="rango.imagen" class="info-abierta__imagen" alt="">
+								<p class="rango-titulo">{{rango.nombre}} - [{{rango.duracion}}]</p>
+								<p class="rango-precio">{{rango.precio}}</p>
+							</div>
+							<div class="info-info">
+								<div class="ventajas scroll">
+									<h3>Ventajas dentro del survival</h3>
+									<p v-for="ventaja of rango.ventajas">{{ventaja}}</p>
+								</div>
+								<div class="botones">
+									<a target="_blank" class="link-rangos--comprar" :href="rango.enlace"><button
+									class="boton-rangos--comprar">COMPRAR</button></a>
+									<button class="boton-rangos--cerrar" @click="rango.ventana = false">CERRAR</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<h2>Crates</h2>
+		<div class="crates rangos">
+			<div v-for="crate of crates">
+				<div class="rango">
+					<img :src="crate.imagen" alt="">
+					<h3>{{crate.nombre}}</h3>
+					<p>{{crate.precio}}</p>
+					<a target="_blank" :href="crate.enlace"><button class="boton-rangos" @click="rango.ventana = true">COMPRAR</button></a>
+				</div>
+			</div>
+		</div>
+
+	</article>
+
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="redes">
+				<p>Redes:</p>
+				<div class="redes-links">
+					<a target="_blank" class="instagram"
+						href="https://www.instagram.com/peligrosanetwork/?hl=es-la"><img class="icono-chico"
+							src="img/iconos/instagram.png" alt="icono-instagram"></a>
+					<a target="_blank" class="discord" href="https://discord.gg/YvnfZVbzTF"><img class="icono-chico"
+							src="img/iconos/discord.png" alt="icono-discord"></a>
+					<a target="_blank" class="twitter" href="#"><img class="icono-chico" src="img/iconos/twiter.png"
+							alt="icono.twitter"></a>
+				</div>
+			</div>
+			<div class="nav-footer">
+				<a href="index.html">
+					<p>Server</p>
+				</a>
+				<a href="tienda.html">
+					<p>Tienda</p>
+				</a>
+				<a href="modos.html">
+					<p>Modos</p>
+				</a>
+				<a href="staff.html">
+					<p>Staff</p>
+				</a>
+				<a href="index.html#galeria">
+					<p>Fotos</p>
+				</a>
+				<a href="novedades.html">
+					<p>Novedades</p>
+				</a>
+			</div>
+		</div>
+		<p>Todos los derechos reservados | Peligrosa Network</p>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="js/app-vue.js"></script>
+</body>
+
+</html>
